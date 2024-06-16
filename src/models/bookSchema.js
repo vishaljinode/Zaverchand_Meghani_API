@@ -13,6 +13,16 @@ const booksSchema = mongoose.Schema({
 },{timestamps : true})
 
 
+const storySchema = mongoose.Schema({
+    bookId : { type : mongoose.Schema.Types.ObjectId, ref : 'Book'},
+    title: {type : String ,  index : true},
+    description:  {type : String},   
+    titleIndex : {type : Number},    
+    status :{type : String,default : "Active"},   
+},{timestamps : true})
+
+
+
 const imageSchema = new mongoose.Schema({
     mediaUrl : String,
     mediaType : String,
@@ -24,3 +34,4 @@ const imageSchema = new mongoose.Schema({
 
 module.exports.book = mongoose.model("Book",booksSchema);
 module.exports.image = mongoose.model("Image",imageSchema);
+module.exports.story = mongoose.model("Story",storySchema);
