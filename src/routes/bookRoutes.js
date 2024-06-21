@@ -17,7 +17,7 @@ bookRouter.post("/getBookIndexBybookName",secure,getBookIndexBybookName)
 bookRouter.post("/getDescriptionById",secure,getDescriptionById)
 bookRouter.get("/getBooks",secure,getBooks)
 bookRouter.post("/gettitlesByBookId",secure,getTtilesByBookId)
-bookRouter.post("/getStoryByBookId",secure,getStoryByBookId)
+bookRouter.post("/getStoryByStroyId",secure,getStoryByBookId)
 
 
 
