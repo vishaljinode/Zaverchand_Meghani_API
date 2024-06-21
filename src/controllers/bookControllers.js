@@ -185,7 +185,7 @@ async(req,res)=>{
         return res.status(404).json({error : "storyId Is Required"})
     }
     try{
-        const book = await Story.find({ _id : storyId, status : "Active"})
+        const book = await Story.findOne({ _id : storyId, status : "Active"})
         .select('titleIndex title description')
         .sort({ 'titleIndex': 1 });            
             res.status(200).json({message : " Get story By BookId Successfully",book}); 
