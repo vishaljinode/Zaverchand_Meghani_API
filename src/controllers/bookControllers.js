@@ -159,6 +159,45 @@ const getDescriptionById = async(req,res)=>{
 
 }
 
+const getTtilesByBookId = 
+async(req,res)=>{
+    const { bookId } =  req.body;
+
+    if(!bookId){
+        return res.status(404).json({error : "bookId Is Required"})
+    }
+    try{
+        const book = await Story.find({ bookId: bookId, status : "Active"})
+        .select('titleIndex title')
+        .sort({ 'titleIndex': 1 });            
+            res.status(200).json({message : " Get title By BookId Successfully",book}); 
+        }catch(err){
+            res.status(500).json({error:err.message});
+        }
+
+}
+
+const getStoryByBookId = 
+async(req,res)=>{
+    const { storyId } =  req.body;
+
+    if(!storyId){
+        return res.status(404).json({error : "storyId Is Required"})
+    }
+    try{
+        const book = await Story.find({ _id : storyId, status : "Active"})
+        .select('titleIndex title description')
+        .sort({ 'titleIndex': 1 });            
+            res.status(200).json({message : " Get story By BookId Successfully",book}); 
+        }catch(err){
+            res.status(500).json({error:err.message});
+        }
+
+}
 
 
-module.exports = {addBook, getBooks, getBookIndexBybookName,getDescriptionById,addStory}
+
+module.exports = {addBook, getBooks,
+     getBookIndexBybookName,getDescriptionById,
+     addStory,getTtilesByBookId,getStoryByBookId
+}
