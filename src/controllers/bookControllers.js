@@ -114,14 +114,12 @@ const addStory = async(req,res)=>{
 
 const getBooks = async(req,res)=>{
     try{
-        // const books = await Book.find().populate('bookImage');
-        const uniqueBookNames = await Book.distinct('bookName').populate('bookImage');
-        const books = await Book.find({ bookName: { $in: uniqueBookNames } });
+       
+        const books = await Book.find().populate('bookImage');
         res.status(200).json({message : "Get Books Successfully",books});
         }catch(err){
             res.status(500).json({error:err.message});
         }
-
 }
 
 
