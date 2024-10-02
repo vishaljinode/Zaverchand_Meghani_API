@@ -11,13 +11,13 @@ const secure = require('../middleware/security.js')
 bookRouter.get("/",(req,res)=>{
     res.send("Welcome to Book API");
 })
-bookRouter.post("/addBook",secure,addBook)
-bookRouter.post("/addStory",secure,addStory)
-bookRouter.post("/getBookIndexBybookName",secure,getBookIndexBybookName)
-bookRouter.post("/getDescriptionById",secure,getDescriptionById)
-bookRouter.get("/getBooks",secure,getBooks)
-bookRouter.post("/gettitlesByBookId",secure,getTtilesByBookId)
-bookRouter.post("/getStoryByStroyId",secure,getStoryByBookId)
+bookRouter.post("/addBook",addBook)
+bookRouter.post("/addStory",addStory)
+bookRouter.post("/getBookIndexBybookName",getBookIndexBybookName)
+bookRouter.post("/getDescriptionById",getDescriptionById)
+bookRouter.get("/getBooks",getBooks)
+bookRouter.post("/gettitlesByBookId",getTtilesByBookId)
+bookRouter.post("/getStoryByStroyId",getStoryByBookId)
 
 
 
