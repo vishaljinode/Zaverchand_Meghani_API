@@ -15,12 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/book",bookRoutes)
 
 
-if (!process.env.MONGODB_URL) {
-    console.error('MONGODB_URL is not defined in .env file');
-    process.exit(1);
-  }
+// if (!process.env.MONGODB_URL) {
+//     console.error('MONGODB_URL is not defined in .env file');
+//     process.exit(1);
+//   }
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect("mongodb+srv://vishaljinode:3Z6Gtrb0ywndiNz9@cluster0.aghwquq.mongodb.net/books")
 .then(()=>{
     console.log("connected to database")
 })
