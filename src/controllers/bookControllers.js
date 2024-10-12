@@ -107,9 +107,13 @@ const addStory = async (req, res) => {
 
 const getBooks = async (req, res) => {
   try {
-    const page = req.body.page || 0; 
-    const limit = req.body.limit || 20;
-    const search = req.body.search || ""; 
+    // const page = req.body.page || 0; 
+    // const limit = req.body.limit || 20;
+    // const search = req.body.search || ""; 
+    
+    const page = parseInt(req.query.page) || 0;
+    const limit = parseInt(req.query.limit) || 25;
+    const search = req.query.search || '';
 
     // Build query for searching
     const query = search ? { bookName : { $regex: search, $options: "i" } } : {}; 
