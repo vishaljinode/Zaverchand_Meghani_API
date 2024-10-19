@@ -41,7 +41,7 @@ const sendNotification = async (req, res) => {
 
       // Create messages for valid tokens
       const messages = validExpoTokens.map((token) => ({
-        to: token,
+        to: token.fcm_token,
         sound: "default",
         title: title,
         body: description,
