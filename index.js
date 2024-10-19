@@ -6,6 +6,8 @@ const cors = require('cors');
 const dotenv = require("dotenv")
 dotenv.config()
 const bookRoutes = require('./src/routes/bookRoutes');
+const notificationRoute = require('./src/routes/notificationRoutes');
+const userTokenRoute = require('./src/routes/userTokenRoutes')
 
 
 app.use(express.json());
@@ -13,6 +15,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/book",bookRoutes)
+app.use("/notification",notificationRoute)
+app.use("/usertoken",userTokenRoute)
 
 
 // if (!process.env.MONGODB_URL) {
