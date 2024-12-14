@@ -114,14 +114,21 @@ const getBooks = async (req, res) => {
     const page = parseInt(req.query.page) || 0;
     const limit = parseInt(req.query.limit) || 25;
     const search = req.query.search || '';
-
     // Build query for searching
-    const query = search ? { bookName : { $regex: search, $options: "i" } } : {}; 
+    let query = {};
+    
+    
+    if(search){
+      query = { bookName : { $regex: search, $options: "i" } } 
+    }
+      
+      
 
-    const books = await Book.find(query) 
-      .populate("bookImage") 
-      .limit(limit) 
-      .skip(page * limit); 
+    const books = await Book.find(query)
+    .populate("bookImage")         
+    .limit(limit)                 
+    .skip(page * limit) 
+    .sort({ createdAt: 1 });
 
     // Get total count for pagination
     const totalCount = await Book.countDocuments(query);
